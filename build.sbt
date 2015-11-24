@@ -1,3 +1,5 @@
+import sbt._
+
 name := "soapbox"
 
 organization := "au.com.langdale"
