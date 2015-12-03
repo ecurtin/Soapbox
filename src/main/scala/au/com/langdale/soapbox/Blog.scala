@@ -35,7 +35,7 @@ object Blog extends Plugin {
     blogContents := {
 
       val items = blogItems.value.map (item => item.path -> item).toMap
-      
+      println(s"\n OMG I'M CONSTRUCTING THE BLOG WITH ${items.size} ITEMS\n")
       val publish = {
         for {
           f <- (blogSources.value ** blogFilter.value).get
