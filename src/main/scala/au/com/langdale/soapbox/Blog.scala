@@ -50,6 +50,7 @@ object Blog extends Plugin {
     },
 
     blogBuild := {
+      println("\nHOLY HELL BUILDING THE BLOG\n")
       if(blogContents.value.nonEmpty) {
         val html = nodeToXHTML( blogTemplate.value( blogTitle.value, blogContents.value))
         val dst = siteProduct.value / blogPath.value
