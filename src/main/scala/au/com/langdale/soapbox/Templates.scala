@@ -30,6 +30,15 @@ object Templates extends Plugin {
                 <div id="illust"/>
                 <div id="logo"/>
               </div>
+              <div id="menu">
+                <ul class="nav nav-pills">
+                  {
+                  for((text, target) <- siteMenu.value.entries) yield {
+                    <li><a href={target} class="menu">{text}</a></li>
+                  }
+                  }
+                </ul>
+              </div>
               <div id="main">
                 <div class="container">
                   <div id="content">{ content }</div>
@@ -37,15 +46,6 @@ object Templates extends Plugin {
                   { Disqus.disqusFragment.value }
                 </div>  
               </div>  
-              <div id="menu">
-                <ul class="nav nav-pills">
-                {
-                  for((text, target) <- siteMenu.value.entries) yield {
-                    <li><a href={target} class="menu">{text}</a></li>
-                  }
-                }
-                </ul>  
-              </div>
               <div id="footer">{ siteFooter.value }</div>
             </div>
             { Twitter.tweetScript.value }
@@ -89,9 +89,9 @@ object Templates extends Plugin {
           for( Item(_, path, title, descr, date, optIcon) <- items) 
           yield {
             <div class="blog-item">
+              <p><span class="datetime">{DisplayDate(date)}</span></p>
               <h2><a href={prefix + path}>{title}</a></h2>
               <p>{descr}</p>
-              <p><span class="datetime">{DisplayDate(date)}</span></p>
             </div>
           }
 
